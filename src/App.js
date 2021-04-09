@@ -249,19 +249,34 @@ export default class App extends React.Component {
 
       this.setState({
         currentPage: 1
-      }, this.loadData)
+      },()=>{
+        this.state.filteredData.length > 0 ?
+        this.loadData()
+        :
+        this.loadDataFirst()
+      })
     }
     else if (this.state.currentPage >= totalRecords) {
 
       this.setState({
         currentPage: totalRecords
-      }, this.loadData)
+      },()=>{
+        this.state.filteredData.length > 0 ?
+        this.loadData()
+        :
+        this.loadDataFirst()
+      })
     }
     else {
 
       this.setState({
         currentPage: this.state.currentPage - 1
-      }, this.loadData)
+      },()=>{
+        this.state.filteredData.length > 0 ?
+        this.loadData()
+        :
+        this.loadDataFirst()
+      })
     }
   }
 
